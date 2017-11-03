@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/bilal/AndroidStudioProjects/WifiDirectTestApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/bilal/AndroidStudioProjects/WifiDirectTestApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_097efb44bca0fd370dd8bca93c985d37d4393476/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/bilal/AndroidStudioProjects/WifiDirectTestApp/app/libs/YouTubeAndroidPlayerApi.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3c4f96ff493456651cc7bdb0b47e10eb25545a16">
+        <dex dex="/Users/bilal/AndroidStudioProjects/WifiDirectTestApp/app/build/intermediates/transforms/dex/debug/folders/1000/2/YouTubeAndroidPlayerApi_bed00936fd9312cec7a0deecf23ab64b7d266f17/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/bilal/AndroidStudioProjects/WifiDirectTestApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="fafbd511fcf3ff372164aa25aa0c0c337ad2dea5">
+        <dex dex="/Users/bilal/AndroidStudioProjects/WifiDirectTestApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8839155d71a0c5df092a9d5059026c357c76998f/classes.dex" />
+    </item>
+
+</items>
