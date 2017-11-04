@@ -29,7 +29,6 @@ public class PeerDevicesListView extends GridView
 
     private static final String TAG = PeerDevicesListView.class.getSimpleName();
     private PeerDevicesListAdapter mAdapter;
-    private OnDeviceClickListener mOnDeviceClickListener;
     private WifiDirectManager mWifiDirectManager;
     private List<WifiP2pDevice> mPeerDevices = new ArrayList<>();
 
@@ -60,15 +59,6 @@ public class PeerDevicesListView extends GridView
         setOnItemClickListener(this);
     }
 
-    /**
-     * sets device click listener.
-     *
-     * @param listener callback listener.
-     */
-    public void setOnDeviceClickListener(final OnDeviceClickListener listener) {
-        mOnDeviceClickListener = listener;
-    }
-
     private void updateList(final List<WifiP2pDevice> mPeerDevices) {
         mAdapter.update(mPeerDevices);
     }
@@ -82,14 +72,6 @@ public class PeerDevicesListView extends GridView
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         final WifiP2pDevice wifiDevice = (WifiP2pDevice) getAdapter().getItem(i);
         mWifiDirectManager.connect(wifiDevice);
-        mOnDeviceClickListener.onDeviceClicked(wifiDevice);
-    }
-
-    /**
-     * Device click callbacks.
-     */
-    public interface OnDeviceClickListener {
-        void onDeviceClicked(WifiP2pDevice wifiP2pDevice);
     }
 
     @Override
@@ -185,17 +167,15 @@ public class PeerDevicesListView extends GridView
 
     /**
      * Discover devices using wifidirect.
+     *
      * @param wifiDirectManager
-     * @param onDeviceClickListener
      */
-    public void discover(final WifiDirectManager wifiDirectManager, final OnDeviceClickListener onDeviceClickListener) {
+    public void discover(final WifiDirectManager wifiDirectManager) {
         mWifiDirectManager = wifiDirectManager;
-        mOnDeviceClickListener = onDeviceClickListener;
         mWifiDirectManager.start(this);
     }
 
     public void stop() {
         mWifiDirectManager.stop();
-        mOnDeviceClickListener = null;
     }
 }
