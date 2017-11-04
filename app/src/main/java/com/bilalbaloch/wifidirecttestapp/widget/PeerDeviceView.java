@@ -41,6 +41,7 @@ public class PeerDeviceView extends RelativeLayout {
     }
 
     private void init() {
+        setBackground(ContextCompat.getDrawable(getContext(), android.R.drawable.alert_light_frame));
         inflate(getContext(), R.layout.peer_device_view, this);
         mDeviceStatus = (ImageView) findViewById(R.id.device_status);
         mDeviceName = (TextView) findViewById(R.id.device_name);

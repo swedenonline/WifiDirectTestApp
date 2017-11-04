@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="fafbd511fcf3ff372164aa25aa0c0c337ad2dea5">
+        sha1="350042e41c36073736edd71cb05c1ae78313090d">
         <dex dex="/Users/bilal/AndroidStudioProjects/WifiDirectTestApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8839155d71a0c5df092a9d5059026c357c76998f/classes.dex" />
     </item>
 
