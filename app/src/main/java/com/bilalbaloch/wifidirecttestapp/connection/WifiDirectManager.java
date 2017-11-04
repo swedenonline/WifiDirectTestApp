@@ -25,13 +25,14 @@ public class WifiDirectManager extends BroadcastReceiver {
     private Context mContext;
     private WifiP2pManager mManager;
     private WifiP2pManager.Channel mChannel;
+    private volatile boolean mIsStarted = false;
 
 
     /**
      * Constructor.
      */
     private WifiDirectManager() {
-
+        throw new RuntimeException("Call constructor with parameter application context");
     }
 
     /**
@@ -44,6 +45,8 @@ public class WifiDirectManager extends BroadcastReceiver {
     }
 
     private void init() {
+
+        mIsStarted = true;
 
         registerReceiver();
 
@@ -73,6 +76,10 @@ public class WifiDirectManager extends BroadcastReceiver {
      * @param listener WifiDirectManagerListener instance.
      */
     public void start(final WifiDirectManagerListener listener) {
+
+        if (mIsStarted) {
+            stop();
+        }
 
         mWifiDirectManagerListener = listener;
 
@@ -129,6 +136,7 @@ public class WifiDirectManager extends BroadcastReceiver {
      * Unregisters receiver.
      */
     public void stop() {
+        mIsStarted = false;
         try {
             mContext.unregisterReceiver(this);
             mWifiDirectManagerListener = null;

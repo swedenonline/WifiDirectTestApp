@@ -62,7 +62,6 @@ public class PeerDeviceView extends RelativeLayout {
             default:
                 imageSrc = android.R.drawable.star_off;
                 break;
-
         }
 
         mDeviceStatus.setImageDrawable(ContextCompat.getDrawable(getContext(), imageSrc));

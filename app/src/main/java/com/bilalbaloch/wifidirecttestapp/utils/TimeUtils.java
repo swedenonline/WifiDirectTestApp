@@ -26,7 +26,7 @@ public final class TimeUtils {
      * Returns current time in milliseconds.
      */
     public static String getCurrentTime() {
-        Log.d(TAG, FORMATTER.format(new Date()));
+        //Log.d(TAG, FORMATTER.format(new Date()));
         return FORMATTER.format(new Date());
     }
 
@@ -36,7 +36,7 @@ public final class TimeUtils {
      * @param timeInMillis milliseconds to convert.
      */
     public static String getHumanReadableTimeFormat(final String timeInMillis) {
-        Log.d(TAG, timeInMillis);
+        //Log.d(TAG, timeInMillis);
         return timeInMillis;
     }
 }

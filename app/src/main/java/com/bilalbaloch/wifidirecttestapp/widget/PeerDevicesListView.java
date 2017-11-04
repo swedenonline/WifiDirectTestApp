@@ -55,7 +55,6 @@ public class PeerDevicesListView extends GridView
     }
 
     private void init() {
-        mWifiDirectManager = new WifiDirectManager(getContext());
         mAdapter = new PeerDevicesListAdapter(getContext());
         setAdapter(mAdapter);
         setOnItemClickListener(this);
@@ -70,23 +69,20 @@ public class PeerDevicesListView extends GridView
         mOnDeviceClickListener = listener;
     }
 
-    /**
-     * updates device list.
-     *
-     * @param mPeerDevices list to update.
-     */
-    public void updateList(final List<WifiP2pDevice> mPeerDevices) {
+    private void updateList(final List<WifiP2pDevice> mPeerDevices) {
         mAdapter.update(mPeerDevices);
     }
 
-    private void resetToggleConnect() {
+    private void resetList() {
         mPeerDevices.clear();
         updateList(mPeerDevices);
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        mOnDeviceClickListener.onDeviceClicked((WifiP2pDevice) getAdapter().getItem(i));
+        final WifiP2pDevice wifiDevice = (WifiP2pDevice) getAdapter().getItem(i);
+        mWifiDirectManager.connect(wifiDevice);
+        mOnDeviceClickListener.onDeviceClicked(wifiDevice);
     }
 
     /**
@@ -104,7 +100,7 @@ public class PeerDevicesListView extends GridView
     @Override
     public void onChannelDisconnected() {
         Log.d(TAG, "onChannelDisconnected");
-        resetToggleConnect();
+        resetList();
     }
 
     @Override
@@ -125,7 +121,7 @@ public class PeerDevicesListView extends GridView
                 break;
         }
         Log.d(TAG, "onFailureDisconverPeers");
-        resetToggleConnect();
+        resetList();
     }
 
     @Override
@@ -150,7 +146,7 @@ public class PeerDevicesListView extends GridView
             updateList(mPeerDevices);
         } else {
             Log.d(TAG, "no Peer devices Available");
-            resetToggleConnect();
+            resetList();
         }
     }
 
@@ -173,7 +169,7 @@ public class PeerDevicesListView extends GridView
                 break;
         }
         Log.d(TAG, "onConnectFailure");
-        resetToggleConnect();
+        resetList();
     }
 
     @Override
@@ -189,12 +185,17 @@ public class PeerDevicesListView extends GridView
 
     /**
      * Discover devices using wifidirect.
+     * @param wifiDirectManager
+     * @param onDeviceClickListener
      */
-    public void discover() {
+    public void discover(final WifiDirectManager wifiDirectManager, final OnDeviceClickListener onDeviceClickListener) {
+        mWifiDirectManager = wifiDirectManager;
+        mOnDeviceClickListener = onDeviceClickListener;
         mWifiDirectManager.start(this);
     }
 
     public void stop() {
         mWifiDirectManager.stop();
+        mOnDeviceClickListener = null;
     }
 }
