@@ -54,6 +54,7 @@ public class PingStateView extends RelativeLayout {
      */
     public void updateView(final PingData pingData) {
         mPingTextTextView.setTextColor(ContextCompat.getColor(getContext(), getTextColor(pingData.getPingStatus())));
+        mPingTimeTextView.setTextColor(ContextCompat.getColor(getContext(), getTextColor(pingData.getPingStatus())));
         mPingTextTextView.setText(pingData.getPingText());
         mPingTimeTextView.setText(TimeUtils.getHumanReadableTimeFormat(pingData.getPingTime()));
     }

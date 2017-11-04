@@ -39,8 +39,9 @@
         <com.bilalbaloch.wifidirecttestapp.widget.TrafficStateView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:padding="16dp"
+            android:textSize="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             tools:text="TrafficState" />
 
         <com.bilalbaloch.wifidirecttestapp.widget.PeerDevicesListView

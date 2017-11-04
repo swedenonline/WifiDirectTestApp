@@ -19,6 +19,7 @@ public class CustomYoutubeFragment
         extends com.google.android.youtube.player.YouTubePlayerFragment
         implements YouTubePlayer.OnInitializedListener {
 
+    private static final String VIDEO_PATH = "RtU_mdL2vBM";
     private YouTubePlayerFragment playerFragment;
     private YouTubePlayer mPlayer;
 
@@ -77,8 +78,7 @@ public class CustomYoutubeFragment
         });
 
         if (!wasRestored) {
-            //player.cueVideo("QeMuEWxtjVk");
-            mPlayer.loadVideo("QeMuEWxtjVk");
+            mPlayer.loadVideo(VIDEO_PATH);
         } else {
             mPlayer.play();
         }

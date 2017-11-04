@@ -47,7 +47,6 @@ public class TrafficStateView extends AppCompatTextView {
 
     private void init() {
         setBackgroundDrawable(ContextCompat.getDrawable(getContext(), android.R.drawable.alert_light_frame));
-        setPadding(30, 30, 30, 30);
         mHandler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
@@ -78,26 +77,30 @@ public class TrafficStateView extends AppCompatTextView {
 
     private float getUidTxBytes() {
         float bytes = TrafficStats.getUidTxBytes(getCurrentAppUid());
-        float mbs = Math.round(bytes / (Math.pow(1024, 2)));
+        float mbs = convertBytesToMbits(bytes);
         return mbs;
     }
 
     private float getUidRxBytes() {
         float bytes = TrafficStats.getUidRxBytes(getCurrentAppUid());
-        float mbs = Math.round(bytes / (Math.pow(1024, 2)));
+        float mbs = convertBytesToMbits(bytes);
         return mbs;
     }
 
     private float getMobileTxBytes() {
         float bytes = TrafficStats.getMobileTxBytes();
-        float mbs = Math.round(bytes / (Math.pow(1024, 2)));
+        float mbs = convertBytesToMbits(bytes);
         return mbs;
     }
 
     private float getMobileRxBytes() {
         float bytes = TrafficStats.getMobileRxBytes();
-        float mbs = Math.round(bytes / (Math.pow(1024, 2)));
+        float mbs = convertBytesToMbits(bytes);
         return mbs;
+    }
+
+    private long convertBytesToMbits(float bytes) {
+        return Math.round(bytes / (Math.pow(1024, 2)));
     }
 
     public void update() {
