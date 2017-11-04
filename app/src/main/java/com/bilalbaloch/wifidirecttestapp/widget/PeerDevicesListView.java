@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pInfo;
+import android.support.design.widget.Snackbar;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -151,7 +152,7 @@ public class PeerDevicesListView extends GridView
                 break;
         }
         Log.d(TAG, "onConnectFailure");
-        resetList();
+        Snackbar.make(this, "Failed to connect with errorCode: " + errorCode, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

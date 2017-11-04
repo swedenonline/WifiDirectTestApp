@@ -1,7 +1,7 @@
 package com.bilalbaloch.wifidirecttestapp.model;
 
 /**
- * Created by a244508 on 2017-11-02.
+ * Created by bilal on 2017-11-02.
  */
 
 public class PingData {
